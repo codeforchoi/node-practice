@@ -3,12 +3,10 @@
 const express = require("express");
 const router = express.Router();        // 보통 라우터는 router를 쓰고 express의 Router를 받아옴.
 
-router.get("/", (req, res) => {         // req는 요청 request, res는 응답 response
-    res.render("home/index");           // 해당 경로로 이동할 수 있도록 해주는 기능
- });
+const ctrl = require("./home.ctrl");
+
+router.get("/", ctrl.home);
  
-router.get("/login", (req, res) => {
-     res.render("home/login");          // 해당 경로로 이동할 수 있도록 해주는 기능
- });
+router.get("/login", ctrl.login);
 
  module.exports = router;               // app.js에서 쓸 수 있도록 외부 내보내기를 해줌.
