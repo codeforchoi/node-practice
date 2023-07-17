@@ -1,14 +1,16 @@
-// express의 서버 프레임워크를 사용하지 않고 하는 방법 (express를 써야하는 이유) (#4)
+// 원상복구
 
-const http = require("http");               // http는 내장모듈로 npm으로 설치받아줄 필요는 없다.
-const app = http.createServer((req, res) => {
-    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" }); // 한글 처리, text중에 html이고 charset은 utf-8이다로 지정해 해석하도록 응답해줌.
-    if (req.url === '/') {
-        res.end("여기는 루트 입니다.");
-    } else if (req.url === "/login") {
-        res.end("여기는 로그인 화면입니다.");
-    }});
+const express = require("express");     // require 명령어로 express 라는 모듈을 다운받아준다.
+const app = express();                  // app 이라는 변수에 express를 실행시킴
 
-app.listen(3001, () => {
-    console.log("http로 가동된 서버입니다.");
+app.get("/", (req, res) => {            // req는 요청 request, res는 응답 response
+    res.send("여기는 루트입니다.");   
+});
+
+app.get("/login", (req, res) => {
+    res.send("여기는 로그인 화면입니다.");
+});
+
+app.listen(3000, () => {                // listen이라는 명령어로 서버를 띄울 수 있음. (첫번째 매개변수: 3000번 포트로 열어주고, 두번째 매개변수: callback함수를 넘길 수 있음)
+    console.log("서버 가동");            // 서버 콘솔에 서버가동 띄움.
 });
