@@ -11,5 +11,14 @@ function login() {
     const req = {                                           // req 오브젝트에 id와 password의 value값들을 저장해준다.
         id: id.value,
         password: password.value,
-    };    
+    };       
+  
+    // fetch함수 (데이터 전달)
+    fetch("/login", {                                       // 첫번째 매개변수: 데이터를 전달할 경로 지정, 두번째 매개변수: 전달할 데이터
+        method: "POST",                                     // body를 통해 데이터를 전달할 때에는 http메서드 중 POST방법으로 전달해주어야함.
+        headers: {                                          // headers키 값에 오브젝트 데이터 형태로 보낼 때 전달하는 데이터가 json데이터라고 명시적으로 알려주어야함.
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(req),                          // body키값을 통해 req데이터를 JSON.stringify메서드를 사용해 오브젝트를 json형태의 문자열로 바꾸어줌.
+    });
 }

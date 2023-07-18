@@ -5,8 +5,7 @@ const router = express.Router();        // 보통 라우터는 router를 쓰고 
 
 const ctrl = require("./home.ctrl");
 
-router.get("/", ctrl.home);
- 
+router.get("/", ctrl.home); 
 router.get("/login", ctrl.login);
 
  module.exports = router;               // app.js에서 쓸 수 있도록 외부 내보내기를 해줌.
