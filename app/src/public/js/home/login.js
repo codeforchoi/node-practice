@@ -22,5 +22,14 @@ function login() {
         body: JSON.stringify(req),                          // body키값을 통해 req데이터를 JSON.stringify메서드를 사용해 오브젝트를 json형태의 문자열로 바꾸어줌.
     })
         .then((res) => res.json())                          // fetch로 전달하고 응답한 데이터를 받을려면 then메서드를 써야함. (res.json()은 Promise형태로 데이터를 받아옴)
-        .then((res) => console.log(res));                   // .then(console.log); 해도 가능, Promise데이터에 접근하기 위해서 then메서드를 쓰고 res에 받아오면 앞서 만든 오브젝트 데이터를 받아올 수 있음.
+        .then((res) => {                                    // .then(console.log); 해도 가능, Promise데이터에 접근하기 위해서 then메서드를 쓰고 res에 받아오면 앞서 만든 오브젝트 데이터를 받아올 수 있음.
+            if (res.success) {                              // success키값이 true이면 location.href를 이용해 "/"루트 경로로 가도록 한다.
+                location.href = "/";
+            } else {                                        // false이면 alert메서드를 사용해 res.msg 에러 메세지를 띄워준다.
+                alert(res.msg);
+            }
+        })
+        .catch((err) => {                                   // 위 로직을 수행하다가 error가 발생할 때 error처리 방법
+            console.err("로그인 중 에러 발생");               // 콘솔에 에러를 띄우줌. 에러가 발생하는 경우는 index.js에서 post라우팅을 지우면 error발생 가능. 
+        });                                                 // console.err(new Error("로그인 중 에러 발생"));로 하면 "Error: 로그인 중 에러 발생"으로 뜨게 됨.
 }
