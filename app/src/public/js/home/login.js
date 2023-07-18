@@ -20,5 +20,7 @@ function login() {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(req),                          // body키값을 통해 req데이터를 JSON.stringify메서드를 사용해 오브젝트를 json형태의 문자열로 바꾸어줌.
-    });
+    })
+        .then((res) => res.json())                          // fetch로 전달하고 응답한 데이터를 받을려면 then메서드를 써야함. (res.json()은 Promise형태로 데이터를 받아옴)
+        .then((res) => console.log(res));                   // .then(console.log); 해도 가능, Promise데이터에 접근하기 위해서 then메서드를 쓰고 res에 받아오면 앞서 만든 오브젝트 데이터를 받아올 수 있음.
 }
