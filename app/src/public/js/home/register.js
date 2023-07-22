@@ -9,12 +9,14 @@ const id = document.querySelector("#id"),                   // DOM은 Document O
 registerBtn.addEventListener("click", register);            // register버튼이 click되는 이벤트가 발생하면 register함수를 실행
 
 // register 함수
-function register() {                              
+function register() { 
+    if (!id.value) return alert("아이디를 입력해주십시오.");  // 아이디를 입력하지 않았을 경우 에러메세지 출력
+    if (password.value !== confirmPassword.value) return alert("비밀번호가 일치하지 않습니다."); // 비밀번호와 비밀번호 확인이 일치하지 않을 경우 에러메세지 출력
+
     const req = {                                           // req 오브젝트에 id와 name, password, confirmPassword의 value값들을 저장해준다.
         id: id.value,
         name: name.value,
-        password: password.value,
-        confirmPassword: confirmPassword,value,
+        password: password.value,        
     };       
   
     // fetch함수 (데이터 전달)

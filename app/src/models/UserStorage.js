@@ -30,6 +30,17 @@ class UserStorage {                                 // 파일명과 동일하게
         }, {});
         return userInfo;                                                // userInfo 오브젝트를 반환 (해당 id와 관련된 정보들이 들어있음)
     }
+
+    // 회원가입으로 입력된 정보를 users에 저장하는 메서드
+    static save(userInfo) {
+        const users = this.#users;
+        users.id.push(userInfo.id);
+        users.name.push(userInfo.name);
+        users.password.push(userInfo.password);
+        return { success: true };
+    }
+    // 위와 같은 로직은 서버가 꺼졌다가 다시 가동되면 추가된 정보는 모두 지워지게 된다.
+    // 이를 위해 user정보를 파일에 저장해야한다.
 }
 
 module.exports = UserStorage;

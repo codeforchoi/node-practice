@@ -8,17 +8,25 @@ class User {
         this.body = body;
     }
 
-    login() {                       // login 인증 로직
-        const body = this.body;     // 코드 간결성을 위해 생성 
-        const { id, password } = UserStorage.getUserInfo(body.id);  // UserStorage클래스의 getUserInfo()메서드를 사용해 입력받은 id를 파라미터로 주어 그와 관련된 정보인 id와 password만 받아옴.
+    // login 인증 메서드
+    login() {                       
+        const client = this.body;   // 코드 간결성을 위해 생성 
+        const { id, password } = UserStorage.getUserInfo(client.id);    // UserStorage클래스의 getUserInfo()메서드를 사용해 입력받은 id를 파라미터로 주어 그와 관련된 정보인 id와 password만 받아옴.
 
-        if (id) {                                                   // 받아온 id가  유저정보에 있을 경우
-            if ( id === body.id && password === body.password) {    // UserStorage의 id와 password가 입력받은 id와 password와 같을 경우
-                return { success: true };                           // success키에 true를 넣고 오브젝트 반환
+        if (id) {                                                       // 받아온 id가  유저정보에 있을 경우
+            if ( id === client.id && password === client.password) {    // UserStorage의 id와 password가 입력받은 id와 password와 같을 경우
+                return { success: true };                               // success키에 true를 넣고 오브젝트 반환
             }
-            return { success: false, msg: "비밀번호가 틀렸습니다."};  // id는 같으나 비밀번호가 틀렸을 경우 success키에 false넣고 msg메세지 넣어 반환
+            return { success: false, msg: "비밀번호가 틀렸습니다."};      // id는 같으나 비밀번호가 틀렸을 경우 success키에 false넣고 msg메세지 넣어 반환
         }
-        return { success: false, msg: "존재하지 않는 아이디입니다."}; // 입력받은 id가 UserStorage에 없을 경우 success키에 false넣고 msg메세지 넣어 반환
+        return { success: false, msg: "존재하지 않는 아이디입니다."};     // 입력받은 id가 UserStorage에 없을 경우 success키에 false넣고 msg메세지 넣어 반환
+    }
+
+    // 회원가입 입력정보 저장 메서드
+    register() {
+        const client = this.body;
+        const response = UserStorage.save(client);                      // 회원가입 입력정보를 저장하는 save()메서드 호출
+        return response;
     }
 }
 
