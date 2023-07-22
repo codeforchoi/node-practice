@@ -19,6 +19,17 @@ class UserStorage {                                 // 파일명과 동일하게
         }, {});                                                 // 맨 처음 초기값을 빈 오브젝트로 설정.
         return newUsers;                                        // getUsers()메서드의 반환값으로 newUsers오브젝트를 반환.
     }
+
+    // 해당 id의 user정보만 가져오는 메서드
+    static getUserInfo(id) {                                            // 파라미터로 User.js파일의 body.id를 받을 것임.
+        const users = this.#users;                                      // user변수에 UserStorage클래스의 #users값을 모두 받아옴.
+        const idx = users.id.indexOf(id);                               // 파라미터로 받은 해당 id의 인덱스를 저장.
+        const userInfo = Object.keys(users).reduce((newUser, info) => { // userInfo변수에 users오브젝트의 키들만으로 배열을 만든 것에서 reduce()메서드를 사용해 순회
+            newUser[info] = users[info][idx];                           // newUser[info]키 자리에 users의 해당키의 값을 넣음.
+            return newUser;                                             // newUser오브젝트를 reduce메서드의 newUser파라미터 초기값으로 넣고 반복
+        }, {});
+        return userInfo;                                                // userInfo 오브젝트를 반환 (해당 id와 관련된 정보들이 들어있음)
+    }
 }
 
 module.exports = UserStorage;

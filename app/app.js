@@ -14,7 +14,7 @@ app.set("view engine", "ejs");                      // view engine을 ejs로 설
 app.use(express.static(`${__dirname}/src/public`)); // static함수로 정적 경로를 추가해주는데 현재 디렉토리 이름(app.js파일이 있는 위치를 반환)을 가져와서 /src/public 경로를 지정해준다.
 app.use(bodyParser.json());                         // body-parser가 json데이터를 파싱해올 수 있도록 미들웨어 등록
 // URL을 통해 전달되는 데이터에 한글, 공백 등과 같은 문자가 포함될 경우 제대로 인식되지 않는 문제 해결
-app.use(bodyParser.urlencoded({ extended: tru }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // 라우팅 연결 
 app.use("/", home);                                 // use는 미들웨어를 등록하는 메서드, 첫번째 매개변수: "/" 루트라는 경로로 들어오면 두번째 매개변수: home으로 보내줄 것이다.
