@@ -23,10 +23,14 @@ class User {
     }
 
     // 회원가입 입력정보 저장 메서드
-    register() {
-        const client = this.body;
-        const response = UserStorage.save(client);                          // 회원가입 입력정보를 저장하는 save()메서드 호출
-        return response;
+    async register() {
+        const client = this.body;   
+        try {                                                               // async, await은 try-catch문으로 에러를 처리해줄 수 있다.
+            const response = await UserStorage.save(client);                // 회원가입 입력정보를 저장하는 save()메서드 호출
+            return response;
+        } catch (err) {                                                     // UserStorage.js파일에서 save()메서드의 if문에서 throw해줘서 err를 받을 수 있다.
+            return { success: false, msg: err };                            // err에 문자열을 받아 보내면 정상 출력됨. Error(문자열)넣어서 err가 받으면 문제발생.
+        }        
     }
 }
 
