@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">        <!--ko로 해주면 브라우저가 한글문서로 인식해서 번역하라는 기능을 제시해주지 않음, en이면 번역 기능을 제시해줌.-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/home/login.css">  <!--css파일 적용-->
+    <script src="/js/home/login.js" defer></script>     <!--login.js파일에서 querySelector로 받아올 때 브라우저가 페이지의 파싱을 모두 끝내면 스크립트가 실행되도록 하는 것.-->
+    <title>Document</title>
+</head>
+<body>
+    <div class="login-page">
+        <div class="form">          
+          <form class="login-form">
+            <input id="name" type="text" placeholder="이름"/>
+            <input id="id" type="text" placeholder="아이디"/>
+            <input id="password" type="password" placeholder="비밀번호"/>
+            <input id="confirm-password" type="password" placeholder="비밀번호 확인"/>
+            <button>SING UP</button>
+            <p class="message">Already registered? <a href="/login">login</a></p>
+          </form>
+        </div>
+      </div>
+</body>
+</html>  
+
+<!--Copyright (c) 2023 by Aigars Silkalns (https://codepen.io/colorlib/pen/rxddKy)-->

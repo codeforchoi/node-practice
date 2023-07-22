@@ -5,8 +5,9 @@ const router = express.Router();        // 보통 라우터는 router를 쓰고 
 
 const ctrl = require("./home.ctrl");
 
-router.get("/", ctrl.output.home);          // home화면을 출력해주는 기능 (output)
-router.get("/login", ctrl.output.login);    // login화면을 출력해주는 기능 (output)
-router.post("/login", ctrl.process.login);  // login 데이터를 처리해주는 기능 (process)
+router.get("/", ctrl.output.home);              // home화면을 출력해주는 기능 (output)
+router.get("/login", ctrl.output.login);        // login화면을 출력해주는 기능 (output)
+router.get("/register", ctrl.output.register);  // register화면을 출력해주는 기능 (output)
+router.post("/login", ctrl.process.login);      // login 데이터를 처리해주는 기능 (process)
 
 module.exports = router;               // app.js에서 쓸 수 있도록 외부 내보내기를 해줌.

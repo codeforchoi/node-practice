@@ -9,6 +9,9 @@ const output = {
     },
     login: (req, res) => {
         res.render("home/login");          // 해당 경로로 이동할 수 있도록 해주는 기능
+    },
+    register: (req, res) => {
+        res.render("home/register");
     }
 };
 
