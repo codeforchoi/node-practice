@@ -1,6 +1,6 @@
 "use strict";  
 
-const { createLogger, transports, format } = require("winston");     // 로그 관리 모듈에서 가독성을 위해 필요한 것만 가져옴.
+const { createLogger, transports, format } = require("winston");        // 로그 관리 모듈에서 가독성을 위해 필요한 것만 가져옴.
 const { combine, timestamp, label, printf, simple, colorize } = format;
 
 const printFormat = printf(({ timestamp, label, level, message }) => {  // prinf()메서들를 사용하면 포맷을 원하는 포맷으로 지정해줄 수 있다.

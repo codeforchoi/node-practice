@@ -4,7 +4,7 @@ const id = document.querySelector("#id"),                   // DOM은 Document O
     name = document.querySeletor("#name"),                  
     password = document.querySelector("#password"),         // html문서 내의 선택자를 통해 값을 가져옴.
     confirmPassword = document.querySelector("#confirm-password"),      
-    registerBtn = document.querySelector("#button");         // #은 id로 부여한 선택자, 없는 것은 태그가 하나라서 태그로 부여한 선택자
+    registerBtn = document.querySelector("#button");        // #은 id로 부여한 선택자, 없는 것은 태그가 하나라서 태그로 부여한 선택자
 
 registerBtn.addEventListener("click", register);            // register버튼이 click되는 이벤트가 발생하면 register함수를 실행
 
