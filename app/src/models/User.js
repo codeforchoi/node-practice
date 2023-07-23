@@ -22,7 +22,7 @@ class User {
             }
             return { success: false, msg: "존재하지 않는 아이디입니다."};              // 입력받은 id가 UserStorage에 없을 경우 success키에 false넣고 msg메세지 넣어 반환
         } catch (err) {
-            return { success: false, msg: err }; 
+            return { success: false, err };                                          // 키가 value가 같은 경우 하나만 쓰면 됨.
         }
         
     }
@@ -34,7 +34,7 @@ class User {
             const response = await UserStorage.save(client);                    // 회원가입 입력정보를 저장하는 save()메서드 호출
             return response;
         } catch (err) {                                                         
-            return { success: false, msg: err };                                // err에 문자열을 받아 보내면 정상 출력됨. Error(문자열)넣어서 err가 받으면 문제발생.
+            return { success: false, err };                                // err에 문자열을 받아 보내면 정상 출력됨. Error(문자열)넣어서 err가 받으면 문제발생.
         }        
     }
 }

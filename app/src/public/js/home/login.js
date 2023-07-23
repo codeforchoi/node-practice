@@ -7,7 +7,10 @@ const id = document.querySelector("#id"),                   // DOM은 Document O
 loginBtn.addEventListener("click", login);                  // login버튼이 click되는 이벤트가 발생하면 login함수를 실행
 
 // login 함수
-function login() {                              
+function login() {    
+    if (!id.value) return alert("아이디를 입력해주십시오.");        // 아이디를 입력하지 않았을 경우 에러메세지 출력
+    if (!password.value) return alert("비밀번호를 입력해주십시오."); // 비밀번호를 입력하지 않았을 경우 에러메세지 출력
+    
     const req = {                                           // req 오브젝트에 id와 password의 value값들을 저장해준다.
         id: id.value,
         password: password.value,
@@ -26,6 +29,7 @@ function login() {
             if (res.success) {                              // success키값이 true이면 location.href를 이용해 "/"루트 경로로 가도록 한다.
                 location.href = "/";
             } else {                                        // false이면 alert메서드를 사용해 res.msg 에러 메세지를 띄워준다.
+                if (res.err) return alert(res.err);         // catch문으로 잡은 에러에 대한 메세지 출력이다.
                 alert(res.msg);
             }
         })

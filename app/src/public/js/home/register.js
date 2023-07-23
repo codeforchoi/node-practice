@@ -32,6 +32,7 @@ function register() {
             if (res.success) {                              // success키값이 true이면 location.href를 이용해 "/"루트 경로로 가도록 한다.
                 location.href = "/login";
             } else {                                        // false이면 alert메서드를 사용해 res.msg 에러 메세지를 띄워준다.
+                if (res.err) return alert(res.err);         // catch문으로 잡은 에러에 대한 메세지 출력이다.
                 alert(res.msg);
             }
         })

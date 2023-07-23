@@ -46,4 +46,9 @@ if (process.env.NODE_ENV !== "production") {
     logger.add(opts.console);               // 콘솔 로그 출력
 }
 
+// morgan 로그 모듈 이용을 위한 stream
+logger.stream = {
+    write: (message) => logger.info(message),  // 받은 메세지를 logger의 info 메세지로 출력하도록 설정.
+};
+
 module.exports = logger;
