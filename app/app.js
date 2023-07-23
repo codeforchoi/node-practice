@@ -3,6 +3,9 @@
 // 모듈
 const express = require("express");                 // require 명령어로 express 라는 모듈을 다운받아준다.
 const bodyParser = require("body-parser");          // req.body를 파싱해서 출력해줄 수 있도록 하는 모듈 
+const dotenv = require("dotenv");                   // 환경변수를 관리하는 모듈
+dotenv.config();                                    // dotenv모듈을 동작시킴.
+
 const app = express();                              // app 이라는 변수에 express를 실행시킴
 
 // 라우팅
