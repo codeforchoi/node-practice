@@ -9,18 +9,18 @@ class User {
     }
 
     // login 인증 메서드
-    async login() {                                                             // await을 사용하기 위해 async(비동기)로 함수를 선언해준다.               
-        const client = this.body;                                               // 코드 간결성을 위해 생성 
-        try {                                                                   // async, await은 try-catch문으로 에러를 처리해줄 수 있다.
-            const { id, password } = await UserStorage.getUserInfo(client.id);  // UserStorage클래스의 getUserInfo()메서드를 사용해 입력받은 id를 파라미터로 주어 그와 관련된 정보인 id와 password만 받아옴.
+    async login() {                                                                  // await을 사용하기 위해 async(비동기)로 함수를 선언해준다.               
+        const client = this.body;                                                    // 코드 간결성을 위해 생성 
+        try {                                                                        // async, await은 try-catch문으로 에러를 처리해줄 수 있다.
+            const user = await UserStorage.getUserInfo(client.id);                   // UserStorage클래스의 getUserInfo()메서드를 사용해 입력받은 id를 파라미터로 주어 그와 관련된 정보인 id와 password만 받아옴.
                                                                                                                             
-            if (id) {                                                           // 받아온 id가  유저정보에 있을 경우
-                if ( id === client.id && password === client.password) {        // UserStorage의 id와 password가 입력받은 id와 password와 같을 경우
-                    return { success: true };                                   // success키에 true를 넣고 오브젝트 반환
+            if (user) {                                                              // 받아온 user가 유저정보에 있을 경우
+                if ( user.id === client.id && user.password === client.password) {   // UserStorage의 id와 password가 입력받은 id와 password와 같을 경우
+                    return { success: true };                                        // success키에 true를 넣고 오브젝트 반환
                 }
-                return { success: false, msg: "비밀번호가 틀렸습니다."};          // id는 같으나 비밀번호가 틀렸을 경우 success키에 false넣고 msg메세지 넣어 반환
+                return { success: false, msg: "비밀번호가 틀렸습니다."};               // id는 같으나 비밀번호가 틀렸을 경우 success키에 false넣고 msg메세지 넣어 반환
             }
-            return { success: false, msg: "존재하지 않는 아이디입니다."};         // 입력받은 id가 UserStorage에 없을 경우 success키에 false넣고 msg메세지 넣어 반환
+            return { success: false, msg: "존재하지 않는 아이디입니다."};              // 입력받은 id가 UserStorage에 없을 경우 success키에 false넣고 msg메세지 넣어 반환
         } catch (err) {
             return { success: false, msg: err }; 
         }
