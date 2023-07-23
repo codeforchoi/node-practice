@@ -12,7 +12,6 @@ dotenv.config();                                    // dotenv모듈을 동작시
 const home = require("./src/routes/home");          // home 변수에 폴더를 상대적으로 경로 명시해줌
 
 const logger = require("./src/config/logger");      // winston모듈(로그관리) 가져옴.
-logger.info("로그 기록 테스트");
 
 // 앱 세팅
 app.set("views", "./src/views");                        // 앱 세팅에 views를  파일이 저장될 폴더임을 지정
